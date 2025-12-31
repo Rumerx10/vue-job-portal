@@ -11,7 +11,7 @@ const props = defineProps({
 const showFullDescription = ref(false);
 const truncatedDescription = computed(() => {
   let description = props.job.description;
-  console.log("Truncated Description ===>", description);
+  // console.log("Truncated Description ===>", description);
   if (!showFullDescription.value) {
     return description.substring(0, 100) + "...";
   } else {

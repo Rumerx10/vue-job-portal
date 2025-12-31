@@ -1,15 +1,23 @@
 <script setup>
-import { ref } from "vue";
-import jobsData from "@/jobs.json";
+import { onMounted, ref } from "vue";
 import JobListing from "./JobListing.vue";
 import { defineProps } from "vue";
+import axios from "axios";
 
 defineProps({
   limit: Number,
   showViewMoreBtn: { type: Boolean, default: false },
 });
 
-const jobs = ref(jobsData.jobs);
+const jobs = ref([]);
+onMounted(async () => {
+  try {
+    const response = await axios.get("/api/jobs");
+    jobs.value = response.data;
+  } catch (error) {
+    console.error("Error fetching jobs: ",error);
+  }
+});
 </script>
 
 <template>
@@ -27,7 +35,7 @@ const jobs = ref(jobsData.jobs);
       </div>
       <section v-if="showViewMoreBtn" class="m-auto max-w-lg my-10 px-6">
         <RouterLink
-          href="/jobs"
+          to="/jobs"
           class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
           >View All Jobs
         </RouterLink>
