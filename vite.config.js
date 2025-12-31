@@ -8,7 +8,7 @@ import vueDevTools from "vite-plugin-vue-devtools";
 export default defineConfig({
   plugins: [vue(), vueDevTools(), tailwindcss()],
   server: {
-    port: 5000,
+    port: 3000,
   },
   resolve: {
     alias: {

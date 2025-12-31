@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server --watch src/jobs.json --port 5000",
+    "dev-server": "concurrently \"npm run dev\" \"npm run server\"",
+    "start": "npm run dev-server"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -21,6 +24,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.3",
+    "concurrently": "^9.2.1",
     "vite": "^7.3.0",
     "vite-plugin-vue-devtools": "^8.0.5"
   }
